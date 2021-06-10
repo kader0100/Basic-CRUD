@@ -9,7 +9,7 @@ index.php - main page/home page
 list.php - list record in table
 list2.php - list record in 2 table (record)
 menu.php - list of main menu
-readme.txt - this files
+README.md - this files
 update.php - update record
 ims506.sql - dummy data in sql format, use to import to mysql (you can choose sql or csv format)
 ims506.csv - dummy data in csv format, use to import to mysql
