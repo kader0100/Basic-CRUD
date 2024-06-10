@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     <input type="submit" value="Submit">
 </form>
-
+<br>
 <?php
 // Display table of data
 $sql = "SELECT pelanggan.idPelanggan, pelanggan.namaSendiri, kereta.kereta, kereta.plat FROM pelanggan JOIN kereta ON pelanggan.idPelanggan = kereta.idPelanggan";
