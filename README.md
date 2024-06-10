@@ -14,6 +14,9 @@ update.php - update record
 ims506.sql - dummy data in sql format, use to import to mysql (recommended .sql)
 ims506.csv - dummy data in csv format, use to import to mysql
 
+new file
+dropMenu.php -  have drop down menu selected from pelanggan
+
 Step:
 1. Change line in the config.php accordingly to your hosting setting, especially username (root to yourusername), password and database name (ims506 to your db name). involve in line 4 to 7 only.
 
