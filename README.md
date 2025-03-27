@@ -1,83 +1,109 @@
-# Basic-CRUD
+# **Basic-CRUD**
 
-Files included:
-add.php - add new record
-config.php - connection setting to mysql
-delete.php - delete record
-footer.php - copyright page
-index.php - main page/home page
-list.php - list record in table
-list2.php - list record in 2 table (record)
-menu.php - list of main menu
-README.md - this files
-update.php - update record
-ims506.sql - dummy data in sql format, use to import to mysql (recommended .sql)
-ims506.csv - dummy data in csv format, use to import to mysql
+## **Overview**  
+This project provides a basic CRUD (Create, Read, Update, Delete) system using **PHP (MySQLi) and MySQL**. The included files handle database interactions, menu navigation, and data management.  
 
-new file
-dropMenu.php -  have drop down menu selected from pelanggan
+---
 
-Step:
-1. Change line in the config.php accordingly to your hosting setting, especially username (root to yourusername), password and database name (ims506 to your db name). involve in line 4 to 7 only.
+## **Files Included**  
 
+### **Core Files:**  
+- `config.php` – Database connection settings.  
+- `index.php` – Main/home page.  
+- `menu.php` – Navigation menu.  
+- `footer.php` – Footer (copyright page).  
 
-2. Change content in index.php according to your content
+### **CRUD Operations:**  
+- `add.php` – Add new records.  
+- `list.php` – Display records in a table.  
+- `list2.php` – Display data from two related tables.  
+- `update.php` – Update existing records.  
+- `delete.php` – Delete records.  
 
+### **Database & Data:**  
+- `ims506.sql` – Sample database structure and dummy data (recommended import format).  
+- `ims506.csv` – Sample data in CSV format for import.  
 
-3. In list.php
+### **Additional Files:**  
+- `dropMenu.php` – Dropdown menu selection for "pelanggan" (customers).  
 
-		$sql = "SELECT * FROM pelanggan";
+---
 
-pelanggan is your table name, change accordingly.
+## **Setup & Configuration**  
 
-		<th>ID</th>
-		<th>Name</th>
-		<th>Bapa</th>
+### **1. Configure Database Connection**  
+Edit `config.php` to match your hosting settings (Lines **4-7**):  
+```php
+$host = "localhost";
+$username = "your_username"; // Change from 'root' if needed  
+$password = "your_password"; // Set your database password  
+$database = "your_database_name"; // Change from 'ims506' to your DB name  
+$conn = new mysqli($host, $username, $password, $database);
 
-<th> this is the table heading, change accordingly.
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+```
 
-		<td> ". $row["idPelanggan"]. " </td>
-		<td> ". $row["namaSendiri"]. " </td>
-		<td> " . $row["namaBapa"] . "</td>
+### **2. Customize Homepage**  
+Modify `index.php` to fit your project’s content and requirements.  
 
-[""] this the column name in the table db, change accordingly.
+### **3. Adjust List Page (list.php)**  
+#### Change the table name:  
+```php
+$sql = "SELECT * FROM pelanggan"; // Change 'pelanggan' to your table name  
+```
+#### Modify column names and headings:  
+```php
+<th>ID</th>
+<th>Name</th>
+<th>Father's Name</th>
+```
+```php
+<td> <?= $row["idPelanggan"]; ?> </td>
+<td> <?= $row["namaSendiri"]; ?> </td>
+<td> <?= $row["namaBapa"]; ?> </td>
+```
+Update `["]` to match your database structure.  
 
+### **4. Adjust List from Two Tables (list2.php)**  
+Modify the SQL query to retrieve related data using primary and foreign keys.  
 
-4. list2.php are the same but in this function to collect the data from 2 table, using primary key and foreign key
+### **5. Update Menu (menu.php)**  
+Modify menu items as needed.  
 
+### **6. Customize Update Functionality (update.php)**  
+#### Ensure table name matches:  
+```php
+$sql = "SELECT * FROM pelanggan"; // Change 'pelanggan' to your table name  
+```
+#### Update primary key and column names:  
+```php
+if (empty(trim($_POST["idPelanggan"]))) { // Change 'idPelanggan' to your primary key  
+```
+Modify variable assignments:  
+```php
+$idPelanggan = trim($_POST['idPelanggan']);
+$namaSendiri = trim($_POST['namaSendiri']);
+$namaBapa = trim($_POST['namaBapa']);
+```
+Make sure these match your database columns.  
 
-5. menu.php list the menu, change accordingly.
+#### Update the form data retrieval:  
+```php
+($_POST['idPelanggan']), ($_POST['namaSendiri']), ($_POST['namaBapa'])
+```
+Modify as needed if you have more fields.  
 
+---
 
-6. update.php
+## **Remarks**  
+This is a **basic CRUD system** that you **must modify** to fit your project’s needs. You may also use any CRUD template from the internet at your own risk.  
 
-		$sql = "SELECT * FROM pelanggan";
+This project is **based on W3Schools PHP & MySQL tutorials** and has been modified for better functionality. You are free to integrate frameworks or enhance the UI/UX as needed.  
 
-pelanggan is your table name, same with list.php, change accordingly.
+---
 
-
- 		if(empty(trim(isset($_POST["idPelanggan"])))){
-
-in line 40, idPelanggan, the primary key, change accordingly. Add more if you have more column in table
-
-
-       		$idPelanggan= trim($_POST['idPelanggan']);
-       		$namaSendiri= trim($_POST['namaSendiri']);
-       		$namaBapa= trim($_POST['namaBapa']);	
-
-$idPelanggan, $namaSendiri, $namaBapa is variable, change accrodingly, Add more if you have more column in table
-
-		($_POST['idPelanggan']), ($_POST['namaSendiri']),
-($_POST['namaBapa'])
-
-
-'' inside is data name from form, Add more if you have more input in form
-
-
-
-Remarks:
-This only basic CRUD (create,Retrieve, Update, Delete), you have to modify the .php files accordingly to you needs. Or you may choose any CRUD template in the internet if you want to but own risk/time/understanding. 
-
-This were taken and modified from w3cschool website subtopic php and mysql notes. Your may use any framework to enrich the design and output for the system.
+This version makes the guide **easier to read and follow** while maintaining clarity and structure. 🚀 Let me know if you need further refinements!
 
 
